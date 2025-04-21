@@ -1,4 +1,5 @@
 import requests
+import io
 # res = requests.get('https://api.github.com')
 # print(res.status_code) 
 # print(res.headers) 
@@ -44,7 +45,31 @@ import requests
 # print(response.text)
 
 #demo 5: POST data json
-response = requests.post('https://httpbin.org/post', json={'name':'tinh','age':18})
-print(response.text)
+# response = requests.post('https://httpbin.org/post', json={'name':'tinh','age':18})
+# print(response.text)
 
+#proxy
+#fake ip => fake ip ca may
+#fake ip qua proxy
+
+# proxies = {
+# 	"http": 'http://operator:operator@113.161.210.88:1080/', 
+#     "https": 'http://operator:operator@113.161.210.88:1080/'
+#  }
+
+
+# response=requests.get('https://api.myip.com',proxies=proxies)
+# print(response.json())
+# myip=response.json()['ip']
+# print(myip)
+
+
+#luu file
+def writeHTMLfile(data):
+	file=io.open('code.html','w',encoding='utf-8')
+	file.write(data)
+	file.close()
+	
+res=requests.get('https://www.youtube.com/results?search_query=nghiahsgs')
+writeHTMLfile(res.text)
 
